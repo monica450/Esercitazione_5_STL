@@ -15,13 +15,13 @@ struct PolygonalMesh
     unsigned int NumberOfCell0Ds = 0;
     vector<unsigned int> IdCell0Ds = {};
     vector<Vector2d> CoordinatesCell0Ds;
-    map<unsigned int, list<unsigned int>> Cell0DMarker = {}; // map<marker, list id>
+    map<unsigned int, list<unsigned int>> Cell0DMarker = {}; 
 
     // Cell1D
     unsigned int NumberOfCell1Ds = 0;
     vector<unsigned int> IdCell1Ds = {};
     vector<Vector2i> VerticesCell1Ds = {};
-    map<unsigned int, list<unsigned int>> Cell1DMarker = {}; // id univoco solo per le cell0d, cell1d... l'intersezione non è nulla
+    map<unsigned int, list<unsigned int>> Cell1DMarker = {}; 
 
     // Cell2D
     unsigned int NumberOfCell2Ds = 0;
