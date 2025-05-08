@@ -16,7 +16,7 @@ bool importMesh(const string& path,
         return false;
     else
     {
-        // TEST 1: checks whether the stored points are correct, printing each marker and the corresponding point
+        // TEST 1: controlla se i punti memorizzati sono corretti, stampando ogni marcatore e il punto corrispondente
         cout << "TEST 1:" << endl;
         cout << "Cell0D marker:" << endl;
         for(auto it = mesh.Cell0DMarker.begin(); it != mesh.Cell0DMarker.end(); it++)
@@ -34,7 +34,7 @@ bool importMesh(const string& path,
         return false;
     else
     {
-        // TEST 2: checks whether the stored points are correct, printing each marker and the corresponding point
+        // TEST 2: controlla se i punti memorizzati sono corretti, stampando ogni marcatore e il punto corrispondente
         cout << "TEST 2:" << endl;
         cout << "Cell1D marker:" << endl;
         for(auto it = mesh.Cell1DMarker.begin(); it != mesh.Cell1DMarker.end(); it++)
@@ -48,7 +48,7 @@ bool importMesh(const string& path,
     }
     cout << endl;
 
-    // TEST 3: checks whether the edges of the polygons have non-zero length
+    // TEST 3: controlla se i bordi dei poligoni hanno lunghezza diversa da zero
     cout << "TEST 3:" << endl;
     cout.flush();
     if(!EdgesTest(mesh, tol)){
@@ -62,7 +62,7 @@ bool importMesh(const string& path,
     if(!importCell2D(path + "/Cell2Ds.csv", mesh))
         return false;
 
-    // TEST 4: checks whether the area of the polygons is non-zero
+    // TEST 4: controlla se l'area ha dimensione zero
     cout << "TEST 4:" << endl;
     cout.flush();
     if(!AreaTest(mesh, tol)){
@@ -88,7 +88,7 @@ bool importCell0D(const string& fileName,
         return false;
 
 
-    string header; // temporary variable
+    string header; 
     getline(file, header);
 
     list<string> lines;
@@ -99,7 +99,7 @@ bool importCell0D(const string& fileName,
         lines.push_back(line);
     }
 
-    mesh.NumberOfCell0Ds = lines.size(); // number of vertices
+    mesh.NumberOfCell0Ds = lines.size(); 
 
     if (mesh.NumberOfCell0Ds == 0)
     {
@@ -119,7 +119,7 @@ bool importCell0D(const string& fileName,
         unsigned int marker;
         Vector2d coordinates;
 
-        convert >> id >> delimiter >> marker >> delimiter >> coordinates(0) >> delimiter >> coordinates(1); // 0 -> coordinate x, 1 -> coordinate y
+        convert >> id >> delimiter >> marker >> delimiter >> coordinates(0) >> delimiter >> coordinates(1); 
 
         mesh.IdCell0Ds.push_back((id));
         mesh.CoordinatesCell0Ds.push_back(coordinates);
@@ -128,7 +128,6 @@ bool importCell0D(const string& fileName,
         {
             auto ret = mesh.Cell0DMarker.insert({marker, {id}});
             if(!ret.second){
-                // if the marker key was already present in the map then the insertion was not carried out, so I insert it manually
                 mesh.Cell0DMarker[marker].push_back(id);
             }
         }
@@ -183,7 +182,7 @@ bool importCell1D(const string& fileName,
         unsigned int marker;
         Vector2i vertices;
 
-        convert >> id >> delimiter >> marker >> delimiter >> vertices(0) >> delimiter >> vertices(1); // 0 -> coordinate x, 1 -> coordinate y
+        convert >> id >> delimiter >> marker >> delimiter >> vertices(0) >> delimiter >> vertices(1); 
 
         mesh.IdCell1Ds.push_back(id);
         mesh.VerticesCell1Ds.push_back(vertices);
@@ -219,7 +218,7 @@ bool importCell2D(const string& fileName,
     while (getline(file, line))
         lines.push_back(line);
 
-    lines.pop_front(); // the header is ignored
+    lines.pop_front(); 
 
     mesh.NumberOfCell2Ds = lines.size();
 
