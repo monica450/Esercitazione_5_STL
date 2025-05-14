@@ -12,7 +12,7 @@ bool importMesh(const string& path,
                 PolygonalMesh& mesh,
                 double& tol)
 {
-    if(!importCell0D(path + "/Cell0Ds.csv", mesh))
+    if(!importCell0D(path + "Cell0Ds.csv", mesh))
         return false;
     else
     {
@@ -30,7 +30,7 @@ bool importMesh(const string& path,
     }
     cout << endl;
 
-    if(!importCell1D(path + "/Cell1Ds.csv", mesh))
+    if(!importCell1D(path + "Cell1Ds.csv", mesh))
         return false;
     else
     {
@@ -59,7 +59,7 @@ bool importMesh(const string& path,
         cout << "The edges of the polygons have non-zero length" << endl;
     cout << endl;
 
-    if(!importCell2D(path + "/Cell2Ds.csv", mesh))
+    if(!importCell2D(path + "Cell2Ds.csv", mesh))
         return false;
 
     // TEST 4: checks whether the area of the polygons is non-zero
